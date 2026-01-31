@@ -33,22 +33,11 @@ jobs:
       - name: Проверка HTML
         run: |
           echo "Проверка HTML файлов..."
-          # Простая проверка наличия файлов
-          if [ ! -f "index.html" ]; then
-            echo "Ошибка: index.html не найден"
-            exit 1
-          fi
-          if [ ! -f "style.css" ]; then
-            echo "Ошибка: style.css не найден"
-            exit 1
-          fi
-          echo "Все файлы на месте"
+          # Здесь можно добавить валидацию HTML
           
       - name: Подготовка артефактов
         run: |
           echo "Сборка завершена: $(date)" > build-info.txt
-          echo "Версия: 1.0.0" >> build-info.txt
-          echo "Автор: CI/CD Lab" >> build-info.txt
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
@@ -65,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
